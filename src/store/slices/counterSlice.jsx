@@ -13,13 +13,21 @@ const counterSlice = createSlice({
       console.log("Add Counter value");
     },
     minusCounter: (state, action) => {
-      state.counter = --state.counter;
+      if (state.counter === 0) {
+        state.counter = 0;
+      } else {
+        state.counter = --state.counter;
+      }
+    },
+    resetCounter: (state, action) => {
+      state.counter = 0;
+      console.log("Reset Counter value");
     },
   },
 });
 
 const { actions, reducer } = counterSlice;
 
-export const { addCounter, minusCounter } = actions;
+export const { addCounter, minusCounter, resetCounter } = actions;
 
 export default reducer;
